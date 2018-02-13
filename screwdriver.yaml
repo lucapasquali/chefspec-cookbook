@@ -1,0 +1,24 @@
+platform: cookbook
+shared:
+  settings:
+    chef_org: y7_tech
+    chef_server: oliver.chef.ops.yahoo.com
+  notifications:
+    email: lucap@yahoo-inc.com
+
+---
+version: 4
+workflow:
+  - publish
+shared:
+  environment:
+    SD_SETTING_CHEF_ORG: y7_tech
+    SD_SETTING_CHEF_SERVER: oliver.chef.ops.yahoo.com
+    SD_SETTING_PUBLISH_TO_SUPERMARKET: disabled
+  settings:
+    email: lucap@yahoo-inc.com
+jobs:
+  main:
+    template: v3-platform/cookbook-pullrequest@stable
+  publish:
+    template: v3-platform/cookbook-component@stable
